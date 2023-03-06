@@ -12,7 +12,7 @@ import RefreshToken from "./modals/refreshTokenModal";
 
 dotenv.config();
 const port = process.env.PORT ?? 5000;
-const dbURI = process.env.dbURI ?? "";
+const dbURI = process.env.DBURI ?? "";
 
 const app: Express = express();
 
@@ -130,10 +130,10 @@ app.post("/logout",authenticateAccessToken,async(req,res)=>{
 
 
 
-
+console.log(process.env.DBURI);
 // DB
 mongoose
-  .connect(dbURI)
+  .connect(process.env.DBURI??"mongodb+srv://chidamanbu:mongodbATLAS@cluster0.8peajye.mongodb.net/Blog_App?retryWrites=true&w=majority")
   .then(() => {
     console.log("app connected to db");
 
