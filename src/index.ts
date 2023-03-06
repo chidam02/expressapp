@@ -130,14 +130,14 @@ app.post("/logout",authenticateAccessToken,async(req,res)=>{
 
 
 
-console.log(process.env.DBURI);
+console.log(process.env.PORT);
 // DB
 mongoose
   .connect(process.env.DBURI??"mongodb+srv://chidamanbu:mongodbATLAS@cluster0.8peajye.mongodb.net/Blog_App?retryWrites=true&w=majority")
   .then(() => {
     console.log("app connected to db");
 
-    app.listen(port, () => {
+    app.listen(process.env.PORT, () => {
       console.log("app running on port", port);
     });
   })
